@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-7 m-auto">
+    <div class="card m-auto">
+      <div class="card-header">
+         <h3>Add your review</h3>
+     </div>
+<div class="card-body">
+  <form (ngSubmit)='onSubmit()' [formGroup]="addReviewForm">
+
+       <div class="form-group col-12 mb-3 ">
+        <label>Review Content</label>
+               <textarea type="text"
+               class="form-control"
+               formControlName="reviewContent"
+               rows="11"></textarea>
+
+         <div class="error-block" *ngIf="reviewContent.invalid && (reviewContent.touched || reviewSubmitted)">
+          Please write review contet
+        </div>
+
+       </div>
+
+         <div class="form-group col-12 pb-3">
+                <label>Article</label>
+                <select
+                class="form-control"
+                formControlName="article">
+                    <option value=''>
+                    --Select Article--
+                    </option>
+
+                    <option *ngFor="let article of articleList"
+                    value={{article.id}}>
+                    {{article.title}}
+                    </option>
+
+                </select>
+                <span *ngIf="!article.valid && (article.touched || reviewSubmitted)" class="error-block">
+                    Please provide article
+                </span>
+          </div>
+
+          <div class="form-group col-12">
+            <button type="submit" class="btn btn-primary btn-block">Save</button>
+          </div>
+    </form>
+  </div>
+  </div>
+  </div>
+</div>
+
+
+
+
+
+

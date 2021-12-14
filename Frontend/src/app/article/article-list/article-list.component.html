@@ -1,0 +1,22 @@
+<label>Filter Article:</label>
+<input [(ngModel)]='Title'>
+<button class="btn btn-secondary ms-2 me-2 mb-2" type="button" (click)="onCityFilter()">Search</button>
+<button class="btn btn-secondary mb-2" type="button" (click)="onCityFilterClear()">Clear</button>  &nbsp;
+
+<label>Sort by &nbsp;</label>
+<select [(ngModel)]='SortbyParam'>
+    <option value='title'>Title</option>
+</select>
+<button class="btn btn-secondary ms-2 mb-2" type="button" (click) = "onSortDirection()">
+  <i *ngIf="SortDirection==='asc'" class="fas fa-sort-alpha-down"></i>
+  <i *ngIf="SortDirection==='desc'" class="fas fa-sort-alpha-up"></i>
+</button>
+<button class="btn btn-secondary ms-3 me-3 mb-2" type="button" (click)="onDuplicateData()">Duplicate Data</button>
+<button class="btn btn-secondary mb-2" type="button" (click)="onRefreshData()">Refresh Data</button>
+
+<div class="row">
+  <div *ngFor="let article of articles|filter:SearchTitle:'title'|sort:[SortbyParam,SortDirection]"
+  class="shadow-lg col-sm-4 p-3">
+<app-article-card [article]="article"></app-article-card>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+.card {
+  min-height: 400px;
+}
+
+.card-body h1{
+  font-family: fantasy;
+  color:rgb(0, 38, 255);
+}
+
+.font-highlight{
+font-style:italic;
+color: red;
+}
+
+.card-img-wrapper{
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover img{
+  transform: scale(1.2,1.2);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  height:180px;
+  width: 230px;
+  opacity: .5;
+}
+
+
+.card img{
+  transform: scale(1,1);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+  height:200px;
+  width: 250px;
+}
+
+.member-icons{
+ position: absolute;
+ bottom: -16%;
+ left:0;
+ right:0;
+ margin-left: auto;
+ margin-right:auto;
+ opacity: 0;
+}
+
+/* kad prekrijemo klasu card-img-wrapper klasu member-icons njen atribut botoom postavi na 0 sto nam
+omogucava da vidimo buttone a po difault je -36% da ih ne vidimo*/
+.card-img-wrapper:hover .member-icons{
+  bottom: 0;
+  opacity: 1;
+}
+
+.animate{
+  transition: all 0.3s ease-in-out;
+}

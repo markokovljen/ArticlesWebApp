@@ -1,0 +1,97 @@
+<div class="row">
+  <div class="col-7 m-auto">
+    <div class="card m-auto">
+      <div class="card-header">
+         <h3>Add your article</h3>
+     </div>
+<div class="card-body">
+  <form (ngSubmit)='onSubmit()' [formGroup]="addArticleForm">
+
+       <div class="form-group col-12 mb-3 ">
+        <span class="align-middle">Title</span>
+        <input type="text" class="form-control"
+         formControlName="title">
+
+         <div class="error-block" *ngIf="title.invalid && (title.touched || articleSubmitted)">
+          Please write title
+        </div>
+
+       </div>
+
+        <div class="content-control">
+               <label>Content</label>
+               <textarea type="text"
+               class="form-control"
+               formControlName="content"
+               rows="11"></textarea>
+
+               <div class="error-block" *ngIf="content.invalid && (content.touched || articleSubmitted)">
+                Please write content
+              </div>
+
+        </div>
+
+         <div class="form-group col-12 pb-3">
+                <label>Journalist</label>
+                <select
+                class="form-control"
+                formControlName="journalist">
+
+                <option disabled selected>
+                  --Select Journalist--
+                  </option>
+
+                    <option *ngFor="let journalist of journalistList"
+                    value={{journalist.id}}>
+                    {{journalist.fullName}}
+                    </option>
+
+                </select>
+
+                <span *ngIf="!journalist.valid && (journalist.touched || articleSubmitted)" class="error-block">
+                    Please provide journalist
+                </span>
+          </div>
+
+          <div class="row" style="margin-bottom:15px;">
+            <div class="col-md-3">
+              <input type="file" accept="image/*" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+              <button type="button" class="btn btn-success" (click)="file.click()">Upload Photo</button>
+              <div class="col-md-4">
+                <span class="upload" *ngIf="progress > 0">
+                  {{progress}}%
+                </span>
+                <span class="upload" *ngIf="message">
+                  {{message}}
+                </span>
+              </div>
+
+            </div>
+            <span *ngIf="addArticleForm.hasError('notUpload')" class="error-block">
+              Pick image for your article
+            </span>
+          </div>
+
+
+          <div class="form-group col-12">
+            <button type="submit" class="btn btn-primary btn-block">Save</button>
+          </div>
+    </form>
+  </div>
+  </div>
+  </div>
+  <!-- <div class="col-4">
+    <div class="card-header">
+    <h3>Your <Article></Article> Preview</h3>
+    <div>
+      <app-article-card [property]="propertyView"></app-article-card>
+    </div>
+  </div>
+</div> -->
+</div>
+
+
+
+
+
+
